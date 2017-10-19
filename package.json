@@ -8,7 +8,10 @@
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "image": "docker build . -t $npm_package_name:dev",
+    "vars": "echo name=$npm_package_name && echo version=$npm_package_version",
+    "docker": "docker run -p 8088:8080 chem-lab:dev"
   },
   "dependencies": {
     "vue": "^2.4.2"
