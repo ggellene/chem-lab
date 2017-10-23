@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div>
     <div id="main-img">
-      <img src="./assets/sample.jpg" title="Chemistry Cat cat demonstrates how to wear protective safety glasses."/>
+      <img v-bind:src="imageSrc" src="./assets/sample.jpg" title="Chemistry Cat cat demonstrates how to wear protective safety glasses."/>
     </div>
     <div id="main-content">{{content}}</div>
   </div>
@@ -12,13 +12,25 @@
   export default {
     name: 'app',
     components: {},
+    props: ['contentRoot', 'images', 'notes'],
     data () {
       return {
         content: 'this is just some static text'
       }
     },
+    computed: {
+      imageSrc: function () {
+        return `/${this.contentRoot}/${this.images}`
+      },
+      noteSrc: function () {
+        return `/${this.contentRoot}/${this.notes}`
+      }
+    },
     created () {
-      fetch('/static/sample.txt')
+      // eslint-disable-next-line
+      console.log(this.props);
+      debugger;
+      fetch(this.noteSrc)
         .then((response) => {
           if(!response.ok){
             return this.content = 'There was a problem loading the lesson text';
