@@ -1,9 +1,12 @@
 /* eslint no-console: 0 */
 
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+import Eagle from 'eagle.js';
+import 'eagle.js/dist/eagle.css';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.use(Eagle);
 
 console.log(App);
 
